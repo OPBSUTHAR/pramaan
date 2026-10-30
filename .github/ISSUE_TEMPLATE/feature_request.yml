@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest a feature, a new scam pattern, or a language/dialect addition.
+title: "[feat]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve
+      description: Who is exposed, and what does Pramaan currently miss?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: This feature should respect Pramaan's promises
+      options:
+        - label: Works fully offline (no network calls in release).
+        - label: Collects no user data.
+        - label: Keeps review time under ~150ms on a low-end phone.
+        - label: Adds a bilingual (Hindi + English) string for any new UI text.
+        - label: Keeps the engine free of Flutter and `dart:io`.
+
+  - type: dropdown
+    id: effort
+    attributes:
+      label: Effort estimate
+      options: [Small, Medium, Large, I don't know]

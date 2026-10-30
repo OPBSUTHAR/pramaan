@@ -1,0 +1,107 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to attach the artifacts to (e.g. v1.0.0)'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  web:
+    name: Web bundle
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web --release --base-href /
+
+      - name: Zip
+        run: |
+          cd build/web
+          zip -r ../../pramaan-web.zip .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pramaan-web
+          path: app/pramaan-web.zip
+          if-no-files-found: error
+
+  apk:
+    name: Android APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter build apk --release
+
+      - name: Rename
+        run: mv build/app/outputs/flutter-apk/app-release.apk pramaan.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pramaan-apk
+          path: app/pramaan.apk
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub release
+    needs: [web, apk]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            artifacts/pramaan-web.zip
+            artifacts/pramaan.apk
+          body: |
+            **Pramaan — proof before you pay.**
+
+            Offline UPI scam detection for India. No account, no upload, no server.
+
+            - `pramaan.apk` — Android build (unsigned debug-key release; verify the
+              source before installing anything from the internet).
+            - `pramaan-web.zip` — static web build; unzip and open `index.html`, or
+              serve the folder from any static host. It runs entirely in the tab.
+
+            Read [docs/PRIVACY.md](docs/PRIVACY.md) before installing.

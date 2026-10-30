@@ -1,0 +1,105 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  engine:
+    name: Engine · analyze + test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/scam_engine
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze
+        run: dart analyze --fatal-infos
+
+      - name: Test
+        run: dart test --reporter expanded
+
+  app:
+    name: App · analyze + test + web build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Toolchain
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+
+      - name: Test
+        run: flutter test --reporter expanded
+
+      - name: Build web bundle
+        run: flutter build web --release
+
+      - name: Upload web bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pramaan-web
+          path: app/build/web
+          retention-days: 14
+          if-no-files-found: error
+
+  privacy-guard:
+    name: Privacy guard · no network in release manifest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release manifest must not request INTERNET
+        run: |
+          set -eu
+          manifest=app/android/app/src/main/AndroidManifest.xml
+          if grep -q 'android.permission.INTERNET' "$manifest"; then
+            echo "::error file=$manifest::The release manifest must stay offline."
+            exit 1
+          fi
+          echo "Release manifest is offline. Good."
+
+      - name: Engine must not depend on dart:io or Flutter
+        run: |
+          set -eu
+          if grep -rn "dart:io\|package:flutter" packages/scam_engine/lib; then
+            echo "::error::scam_engine must stay pure Dart with no I/O."
+            exit 1
+          fi
+          echo "Engine is pure. Good."

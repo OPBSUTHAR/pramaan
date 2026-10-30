@@ -1,0 +1,69 @@
+name: Bug report
+description: Something Pramaan got wrong — caught a scam as safe, flagged a genuine message, crashed or looked wrong.
+title: "[bug]: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Pramaan is offline by design — a reporter never leaves your phone.
+        **Do not paste real scam messages that are aimed at real recipients**, and
+        strip any names, phone numbers, VPAs, account numbers and OTPs before posting.
+
+  - type: input
+    id: version
+    attributes:
+      label: Pramaan version
+      placeholder: "1.0.0+1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where did it happen
+      options:
+        - Android app
+        - Web build
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: Scanned text (redact secrets first)
+      description: What was pasted into Pramaan. Maximum 1000 characters.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What did Pramaan say
+      description: Score, level, SCAM DNA match, UPI warnings — anything shown on screen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should it have said
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open Scan tab\n2. Paste the text\n3. Tap Check this message"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checks
+      options:
+        - label: I have redacted phone numbers, names, VPAs, account numbers and OTPs.
+          required: true
+        - label: I have checked existing issues to avoid a duplicate.
+          required: true

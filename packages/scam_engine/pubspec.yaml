@@ -1,0 +1,14 @@
+name: scam_engine
+description: >-
+  Offline, on-device scam detection for Indian UPI fraud. Fuzzy "Scam DNA"
+  template matching, UPI deep-link auditing and VPA typosquat detection with
+  zero network calls and zero dependencies.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0
