@@ -41,6 +41,27 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
+  <script>
+    // Clear any previously-installed service workers / offline caches
+    // before Flutter boots. Older deployments cached main.dart.js against
+    // a stale asset manifest which rendered a blank canvas on reload.
+    (function () {
+      if ('serviceWorker' in navigator) {
+        try {
+          navigator.serviceWorker.getRegistrations().then(function (rs) {
+            for (var i = 0; i < rs.length; i++) rs[i].unregister();
+          });
+        } catch (e) { }
+      }
+      if (window.caches) {
+        try {
+          window.caches.keys().then(function (names) {
+            for (var i = 0; i < names.length; i++) window.caches.delete(names[i]);
+          });
+        } catch (e) { }
+      }
+    })();
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
