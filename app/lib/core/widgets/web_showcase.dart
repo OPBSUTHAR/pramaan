@@ -46,7 +46,7 @@ class WebShowcase extends StatelessWidget {
       // missed.
       return Stack(
         children: [
-          Positioned.fill(child: child),
+          Positioned.fill(child: RepaintBoundary(child: child)),
           // Top, compact switch (visible when address bar is shown).
           SafeArea(
             child: Align(
@@ -81,7 +81,7 @@ class WebShowcase extends StatelessWidget {
       color: AppColors.ink,
       child: Stack(
         children: [
-          const Positioned.fill(child: _Backdrop()),
+          Positioned.fill(child: IgnorePointer(child: RepaintBoundary(child: const _Backdrop()))),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
