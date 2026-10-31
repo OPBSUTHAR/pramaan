@@ -69,7 +69,9 @@ jobs:
         run: |
           set -eu
           npx --yes vercel@latest deploy --prebuilt --prod --yes \
-            --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
+            --token "$VERCEL_TOKEN" \
+            --scope "$VERCEL_SCOPE" \
+            --project "$VERCEL_PROJECT"
 
       - name: Deploy skipped
         if: ${{ env.VERCEL_TOKEN == '' }}
