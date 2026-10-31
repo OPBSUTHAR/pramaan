@@ -10,10 +10,27 @@ import 'vpa.dart';
 abstract final class UpiLinkParser {
   /// Words a genuine merchant would not need in its display name.
   static const List<String> _suspiciousPayeeWords = <String>[
-    'refund', 'support', 'helpdesk', 'helpline', 'kyc', 'verify',
-    'verification', 'official', 'rbi', 'customs', 'police', 'cbi',
-    'lottery', 'prize', 'cashback', 'reward', 'claim', 'customer care',
-    'government', 'govt', 'income tax',
+    'refund',
+    'support',
+    'helpdesk',
+    'helpline',
+    'kyc',
+    'verify',
+    'verification',
+    'official',
+    'rbi',
+    'customs',
+    'police',
+    'cbi',
+    'lottery',
+    'prize',
+    'cashback',
+    'reward',
+    'claim',
+    'customer care',
+    'government',
+    'govt',
+    'income tax',
   ];
 
   /// True when [raw] looks like something we can inspect.
@@ -32,7 +49,8 @@ abstract final class UpiLinkParser {
     final String decoded = _decoded(trimmed);
 
     // Bare VPA: "name@okhdfcbank"
-    if (!decoded.toLowerCase().contains('upi:') && VpaInspector.isValid(trimmed)) {
+    if (!decoded.toLowerCase().contains('upi:') &&
+        VpaInspector.isValid(trimmed)) {
       return UpiIntent(
         raw: trimmed,
         operation: UpiOperation.pay,

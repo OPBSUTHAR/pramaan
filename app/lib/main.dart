@@ -17,11 +17,7 @@ Future<void> main() async {
 }
 
 class PramaanApp extends StatelessWidget {
-  const PramaanApp({
-    required this.locale,
-    required this.history,
-    super.key,
-  });
+  const PramaanApp({required this.locale, required this.history, super.key});
 
   final LocaleController locale;
   final HistoryStore history;

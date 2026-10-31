@@ -23,8 +23,7 @@ class _UpiScreenState extends State<UpiScreen> {
   static const List<({String label, String value})> _samples = [
     (
       label: 'pay link',
-      value:
-          'upi://pay?pa=sharma.store@okhdfcbank&pn=Sharma%20Store&am=250&cu=INR&mc=5411',
+      value: 'upi://pay?pa=sharma.store@okhdfcbank&pn=Sharma%20Store&am=250&cu=INR&mc=5411',
     ),
     (
       label: 'collect',
@@ -156,8 +155,9 @@ class _UpiScreenState extends State<UpiScreen> {
                   ),
                   IconButton(
                     onPressed: () async {
-                      final data =
-                          await Clipboard.getData(Clipboard.kTextPlain);
+                      final data = await Clipboard.getData(
+                        Clipboard.kTextPlain,
+                      );
                       if (data?.text != null) {
                         _controller.text = data!.text!.trim();
                       }
@@ -205,11 +205,7 @@ class _ErrorCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(
-            Icons.info_outline,
-            size: 18,
-            color: AppColors.caution,
-          ),
+          const Icon(Icons.info_outline, size: 18, color: AppColors.caution),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -260,11 +256,7 @@ class _IntentCard extends StatelessWidget {
                   color: color.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(
-                  _iconFor(intent.operation),
-                  size: 20,
-                  color: color,
-                ),
+                child: Icon(_iconFor(intent.operation), size: 20, color: color),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -369,11 +361,11 @@ class _IntentCard extends StatelessWidget {
   }
 
   static IconData _iconFor(UpiOperation operation) => switch (operation) {
-        UpiOperation.pay => Icons.north_east,
-        UpiOperation.collect => Icons.south_west,
-        UpiOperation.mandate => Icons.autorenew,
-        UpiOperation.unknown => Icons.help_outline,
-      };
+    UpiOperation.pay => Icons.north_east,
+    UpiOperation.collect => Icons.south_west,
+    UpiOperation.mandate => Icons.autorenew,
+    UpiOperation.unknown => Icons.help_outline,
+  };
 
   static String _rupees(double value) {
     final whole = value.round();
@@ -412,8 +404,9 @@ class _HandleBadge extends StatelessWidget {
     }
 
     final known = PspRegistry.isKnown(vpa.handle);
-    final lookalikes =
-        known ? const <String>[] : PspRegistry.lookalikes(vpa.handle);
+    final lookalikes = known
+        ? const <String>[]
+        : PspRegistry.lookalikes(vpa.handle);
     final isTypo = lookalikes.isNotEmpty;
     final color = known
         ? AppColors.safe
@@ -421,8 +414,8 @@ class _HandleBadge extends StatelessWidget {
     final label = known
         ? context.t('upi.handle.known')
         : (isTypo
-            ? context.t('upi.handle.typosquat')
-            : context.t('upi.handle.unknown'));
+              ? context.t('upi.handle.typosquat')
+              : context.t('upi.handle.unknown'));
 
     return Padding(
       padding: const EdgeInsets.only(left: 122, bottom: 8),
@@ -472,10 +465,10 @@ class _WarningRow extends StatelessWidget {
   }
 
   static IconData _iconFor(Severity severity) => switch (severity) {
-        Severity.info => Icons.info_outline,
-        Severity.low => Icons.info_outline,
-        Severity.medium => Icons.error_outline,
-        Severity.high => Icons.warning_amber_rounded,
-        Severity.critical => Icons.dangerous_outlined,
-      };
+    Severity.info => Icons.info_outline,
+    Severity.low => Icons.info_outline,
+    Severity.medium => Icons.error_outline,
+    Severity.high => Icons.warning_amber_rounded,
+    Severity.critical => Icons.dangerous_outlined,
+  };
 }

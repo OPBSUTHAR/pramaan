@@ -23,10 +23,7 @@ class SectionHeader extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+            child: Text(title, style: Theme.of(context).textTheme.titleMedium),
           ),
           ?trailing,
         ],
@@ -132,11 +129,7 @@ class InfoRow extends StatelessWidget {
           Expanded(
             child: selectable
                 ? SelectableText(value, style: style)
-                : Text(
-                    value,
-                    style: style,
-                    textAlign: TextAlign.end,
-                  ),
+                : Text(value, style: style, textAlign: TextAlign.end),
           ),
         ],
       ),
@@ -177,11 +170,7 @@ class SignalTile extends StatelessWidget {
                   color: color.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(
-                  _iconFor(signal.category),
-                  size: 18,
-                  color: color,
-                ),
+                child: Icon(_iconFor(signal.category), size: 18, color: color),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -198,9 +187,7 @@ class SignalTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      hindi
-                          ? signal.category.labelHi
-                          : signal.category.labelEn,
+                      hindi ? signal.category.labelHi : signal.category.labelEn,
                       style: const TextStyle(
                         fontSize: 11.5,
                         color: AppColors.textMuted,
@@ -247,9 +234,7 @@ class SignalTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.ink,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: color.withValues(alpha: 0.28),
-                      ),
+                      border: Border.all(color: color.withValues(alpha: 0.28)),
                     ),
                     child: Text(
                       item,
@@ -269,22 +254,22 @@ class SignalTile extends StatelessWidget {
   }
 
   static IconData _iconFor(RiskCategory category) => switch (category) {
-        RiskCategory.urgency => Icons.timer_outlined,
-        RiskCategory.threat => Icons.gavel_outlined,
-        RiskCategory.payment => Icons.currency_rupee,
-        RiskCategory.credential => Icons.key_outlined,
-        RiskCategory.impersonation => Icons.badge_outlined,
-        RiskCategory.prize => Icons.card_giftcard_outlined,
-        RiskCategory.link => Icons.link_outlined,
-        RiskCategory.remoteAccess => Icons.desktop_windows_outlined,
-        RiskCategory.secrecy => Icons.visibility_off_outlined,
-        RiskCategory.job => Icons.work_outline,
-        RiskCategory.investment => Icons.trending_up,
-        RiskCategory.loan => Icons.account_balance_wallet_outlined,
-        RiskCategory.upi => Icons.qr_code_2_outlined,
-        RiskCategory.format => Icons.text_fields,
-        RiskCategory.knownPattern => Icons.fingerprint,
-      };
+    RiskCategory.urgency => Icons.timer_outlined,
+    RiskCategory.threat => Icons.gavel_outlined,
+    RiskCategory.payment => Icons.currency_rupee,
+    RiskCategory.credential => Icons.key_outlined,
+    RiskCategory.impersonation => Icons.badge_outlined,
+    RiskCategory.prize => Icons.card_giftcard_outlined,
+    RiskCategory.link => Icons.link_outlined,
+    RiskCategory.remoteAccess => Icons.desktop_windows_outlined,
+    RiskCategory.secrecy => Icons.visibility_off_outlined,
+    RiskCategory.job => Icons.work_outline,
+    RiskCategory.investment => Icons.trending_up,
+    RiskCategory.loan => Icons.account_balance_wallet_outlined,
+    RiskCategory.upi => Icons.qr_code_2_outlined,
+    RiskCategory.format => Icons.text_fields,
+    RiskCategory.knownPattern => Icons.fingerprint,
+  };
 }
 
 class EmptyState extends StatelessWidget {

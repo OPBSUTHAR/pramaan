@@ -12,10 +12,31 @@ abstract final class VpaInspector {
 
   /// Usernames that impersonate a bank or support desk.
   static const List<String> _brandWords = <String>[
-    'sbi', 'hdfc', 'icici', 'axis', 'kotak', 'paytm', 'phonepe', 'gpay',
-    'googlepay', 'amazon', 'flipkart', 'irctc', 'rbi', 'npci', 'uidai',
-    'helpdesk', 'customercare', 'support', 'refund', 'kyc', 'official',
-    'verify', 'bank', 'payments', 'wallet',
+    'sbi',
+    'hdfc',
+    'icici',
+    'axis',
+    'kotak',
+    'paytm',
+    'phonepe',
+    'gpay',
+    'googlepay',
+    'amazon',
+    'flipkart',
+    'irctc',
+    'rbi',
+    'npci',
+    'uidai',
+    'helpdesk',
+    'customercare',
+    'support',
+    'refund',
+    'kyc',
+    'official',
+    'verify',
+    'bank',
+    'payments',
+    'wallet',
   ];
 
   /// Parses [raw] into a [Vpa], or null when the shape is invalid.
@@ -63,8 +84,7 @@ abstract final class VpaInspector {
           UpiWarning(
             code: 'typosquat_handle',
             severity: Severity.critical,
-            messageEn:
-                'The handle "@$handle" is one or two letters away from '
+            messageEn: 'The handle "@$handle" is one or two letters away from '
                 '"@${near.first}", which is a real bank. Fraudsters register '
                 'these look-alikes so your money lands with them.',
             messageHi:

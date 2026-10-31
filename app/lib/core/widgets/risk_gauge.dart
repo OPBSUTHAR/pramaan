@@ -56,12 +56,8 @@ class _ShieldPainter extends CustomPainter {
       ..moveTo(s * 0.5, s * 0.2)
       ..lineTo(s * 0.76, s * 0.3)
       ..lineTo(s * 0.76, s * 0.52)
-      ..cubicTo(
-        s * 0.76, s * 0.68, s * 0.63, s * 0.78, s * 0.5, s * 0.84,
-      )
-      ..cubicTo(
-        s * 0.37, s * 0.78, s * 0.24, s * 0.68, s * 0.24, s * 0.52,
-      )
+      ..cubicTo(s * 0.76, s * 0.68, s * 0.63, s * 0.78, s * 0.5, s * 0.84)
+      ..cubicTo(s * 0.37, s * 0.78, s * 0.24, s * 0.68, s * 0.24, s * 0.52)
       ..lineTo(s * 0.24, s * 0.3)
       ..close();
     canvas.drawPath(shield, stroke);

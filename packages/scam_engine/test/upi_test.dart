@@ -114,7 +114,8 @@ void main() {
 
   group('VPA inspection', () {
     test('recognises a real PSP handle', () {
-      final List<UpiWarning> warnings = VpaInspector.inspect('rahul@okhdfcbank');
+      final List<UpiWarning> warnings =
+          VpaInspector.inspect('rahul@okhdfcbank');
       expect(
         warnings.map((UpiWarning w) => w.code),
         isNot(anyOf(contains('unknown_handle'), contains('typosquat_handle'))),

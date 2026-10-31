@@ -12,14 +12,14 @@ import '../text/similarity.dart';
 /// scammer swapped only names and numbers.
 class TemplateMatcher {
   TemplateMatcher(List<ScamTemplate> templates)
-    : _entries = templates
-          .map(
-            (ScamTemplate t) => _Entry(
-              template: t,
-              normalized: _normalize(t.body),
-            ),
-          )
-          .toList(growable: false);
+      : _entries = templates
+            .map(
+              (ScamTemplate t) => _Entry(
+                template: t,
+                normalized: _normalize(t.body),
+              ),
+            )
+            .toList(growable: false);
 
   /// Matcher pre-loaded with the bundled corpus.
   factory TemplateMatcher.builtIn() => TemplateMatcher(builtInTemplates);
@@ -33,7 +33,8 @@ class TemplateMatcher {
   static const double defaultThreshold = 0.5;
 
   /// Finds the closest template, or null when nothing is close enough.
-  TemplateMatch? match(String canonicalInput, {double threshold = defaultThreshold}) {
+  TemplateMatch? match(String canonicalInput,
+      {double threshold = defaultThreshold}) {
     final String normalizedInput = _normalize(canonicalInput);
     if (normalizedInput.length < 24) return null;
 
@@ -67,7 +68,8 @@ class TemplateMatcher {
   /// and by tests.
   List<MapEntry<ScamTemplate, double>> ranked(String canonicalInput) {
     final List<String> variants = _variants(_normalize(canonicalInput));
-    final List<MapEntry<ScamTemplate, double>> out = <MapEntry<ScamTemplate, double>>[];
+    final List<MapEntry<ScamTemplate, double>> out =
+        <MapEntry<ScamTemplate, double>>[];
     for (final _Entry entry in _entries) {
       double best = 0;
       for (final String variant in variants) {
@@ -76,8 +78,9 @@ class TemplateMatcher {
       }
       out.add(MapEntry<ScamTemplate, double>(entry.template, best));
     }
-    out.sort((MapEntry<ScamTemplate, double> a, MapEntry<ScamTemplate, double> b) =>
-        b.value.compareTo(a.value));
+    out.sort(
+        (MapEntry<ScamTemplate, double> a, MapEntry<ScamTemplate, double> b) =>
+            b.value.compareTo(a.value));
     return out;
   }
 

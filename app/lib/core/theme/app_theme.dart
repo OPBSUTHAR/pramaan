@@ -95,8 +95,10 @@ abstract final class AppTheme {
         filled: true,
         fillColor: AppColors.inkSoft,
         hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 15),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 18,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
           borderSide: const BorderSide(color: AppColors.inkLine),
@@ -119,9 +121,7 @@ abstract final class AppTheme {
           fontWeight: FontWeight.w600,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(999),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: AppColors.inkSoft,

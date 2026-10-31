@@ -43,14 +43,16 @@ class _LearnScreenState extends State<LearnScreen> {
   }
 
   List<ScamTemplate> get _visible {
-    return builtInTemplates.where((template) {
-      if (_family != '*' && template.familyEn != _family) return false;
-      if (_query.isEmpty) return true;
-      return template.titleEn.toLowerCase().contains(_query) ||
-          template.titleHi.contains(_query) ||
-          template.body.toLowerCase().contains(_query) ||
-          template.familyEn.toLowerCase().contains(_query);
-    }).toList(growable: false);
+    return builtInTemplates
+        .where((template) {
+          if (_family != '*' && template.familyEn != _family) return false;
+          if (_query.isEmpty) return true;
+          return template.titleEn.toLowerCase().contains(_query) ||
+              template.titleHi.contains(_query) ||
+              template.body.toLowerCase().contains(_query) ||
+              template.familyEn.toLowerCase().contains(_query);
+        })
+        .toList(growable: false);
   }
 
   @override
@@ -290,8 +292,9 @@ class _TemplateCardState extends State<_TemplateCard> {
           ),
           AnimatedCrossFade(
             duration: const Duration(milliseconds: 220),
-            crossFadeState:
-                _open ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            crossFadeState: _open
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
             firstChild: const SizedBox(width: double.infinity),
             secondChild: Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),

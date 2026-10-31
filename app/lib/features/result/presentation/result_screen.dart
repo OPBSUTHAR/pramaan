@@ -115,11 +115,7 @@ class ResultScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Icon(
-                  Icons.memory,
-                  size: 16,
-                  color: AppColors.textMuted,
-                ),
+                const Icon(Icons.memory, size: 16, color: AppColors.textMuted),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
@@ -152,12 +148,12 @@ class ResultScreen extends StatelessWidget {
   }
 
   static IconData _iconFor(RiskLevel level) => switch (level) {
-        RiskLevel.safe => Icons.verified_user_outlined,
-        RiskLevel.caution => Icons.info_outline,
-        RiskLevel.suspicious => Icons.report_problem_outlined,
-        RiskLevel.dangerous => Icons.warning_amber_rounded,
-        RiskLevel.critical => Icons.dangerous_outlined,
-      };
+    RiskLevel.safe => Icons.verified_user_outlined,
+    RiskLevel.caution => Icons.info_outline,
+    RiskLevel.suspicious => Icons.report_problem_outlined,
+    RiskLevel.dangerous => Icons.warning_amber_rounded,
+    RiskLevel.critical => Icons.dangerous_outlined,
+  };
 
   Future<void> _copyVerdict(BuildContext context, String levelLabel) async {
     final hindi = context.isHindi;
@@ -165,11 +161,7 @@ class ResultScreen extends StatelessWidget {
     final tpl = report.templateMatch;
     final buffer = StringBuffer()
       ..writeln('Pramaan · ${report.score}/100 · $levelLabel')
-      ..writeln(
-        hindi
-            ? 'भेजने से पहले प्रमाण।'
-            : 'Proof before you pay.',
-      );
+      ..writeln(hindi ? 'भेजने से पहले प्रमाण।' : 'Proof before you pay.');
     if (tpl != null) {
       buffer.writeln(
         '${context.t('result.dna')}: '
@@ -197,12 +189,12 @@ class ResultScreen extends StatelessWidget {
     final hindi = context.isHindi;
     final text = hindi
         ? '⚠️ प्रमाण ने यह संदेश ठगी बताया (${report.score}/100 · $levelLabel)। '
-            'जवाब न दें, पैसा न भेजें, OTP या UPI पिन साझा न करें। '
-            'शिकायत: 1930 या cybercrime.gov.in'
+              'जवाब न दें, पैसा न भेजें, OTP या UPI पिन साझा न करें। '
+              'शिकायत: 1930 या cybercrime.gov.in'
         : '⚠️ Pramaan flagged this message as a scam '
-            '(${report.score}/100 · $levelLabel). Do not reply, do not pay, '
-            'and never share an OTP or UPI PIN. Report: 1930 or '
-            'cybercrime.gov.in';
+              '(${report.score}/100 · $levelLabel). Do not reply, do not pay, '
+              'and never share an OTP or UPI PIN. Report: 1930 or '
+              'cybercrime.gov.in';
     await Clipboard.setData(ClipboardData(text: text));
     if (!context.mounted) return;
     _snack(context, context.t('result.copied'));
@@ -235,10 +227,7 @@ class _DnaCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            AppColors.lilac.withValues(alpha: 0.14),
-            AppColors.inkCard,
-          ],
+          colors: [AppColors.lilac.withValues(alpha: 0.14), AppColors.inkCard],
         ),
       ),
       child: Column(
@@ -246,11 +235,7 @@ class _DnaCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(
-                Icons.fingerprint,
-                size: 18,
-                color: AppColors.lilac,
-              ),
+              const Icon(Icons.fingerprint, size: 18, color: AppColors.lilac),
               const SizedBox(width: 8),
               Text(
                 context.t('result.dna').toUpperCase(),

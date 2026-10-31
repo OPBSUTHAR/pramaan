@@ -6,8 +6,8 @@ import 'app_strings.dart';
 /// Holds the chosen language and survives app restarts.
 class LocaleController extends ChangeNotifier {
   LocaleController({bool startInHindi = false})
-      : _hindi = startInHindi,
-        _locale = Locale(startInHindi ? 'hi' : 'en');
+    : _hindi = startInHindi,
+      _locale = Locale(startInHindi ? 'hi' : 'en');
 
   static const String _prefsKey = 'pramaan.language';
 

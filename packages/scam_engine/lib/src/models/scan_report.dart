@@ -52,12 +52,12 @@ class ScanReport {
   ScamSignal? get topSignal => signals.isEmpty ? null : signals.first;
 
   Map<String, Object?> toJson() => <String, Object?>{
-    'score': score,
-    'level': level.name,
-    'signals': signals.map((ScamSignal s) => s.toJson()).toList(),
-    'templateMatch': templateMatch?.toJson(),
-    'upiFindings': upiFindings,
-  };
+        'score': score,
+        'level': level.name,
+        'signals': signals.map((ScamSignal s) => s.toJson()).toList(),
+        'templateMatch': templateMatch?.toJson(),
+        'upiFindings': upiFindings,
+      };
 }
 
 /// A near-duplicate match against a bundled scam template.
@@ -82,12 +82,13 @@ class TemplateMatch {
   final String familyHi;
 
   /// Human readable confidence band.
-  String get confidenceLabel =>
-      similarity >= 0.72 ? 'strong' : (similarity >= 0.55 ? 'moderate' : 'weak');
+  String get confidenceLabel => similarity >= 0.72
+      ? 'strong'
+      : (similarity >= 0.55 ? 'moderate' : 'weak');
 
   Map<String, Object?> toJson() => <String, Object?>{
-    'templateId': templateId,
-    'titleEn': titleEn,
-    'similarity': similarity,
-  };
+        'templateId': templateId,
+        'titleEn': titleEn,
+        'similarity': similarity,
+      };
 }

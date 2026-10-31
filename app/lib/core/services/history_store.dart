@@ -38,16 +38,16 @@ class SavedScan {
   }
 
   Map<String, Object?> toJson() => {
-        'id': id,
-        'input': input,
-        'score': score,
-        'signals': signalCount,
-        'at': at.toIso8601String(),
-        'topEn': topTitleEn,
-        'topHi': topTitleHi,
-        'tplEn': templateTitleEn,
-        'tplHi': templateTitleHi,
-      };
+    'id': id,
+    'input': input,
+    'score': score,
+    'signals': signalCount,
+    'at': at.toIso8601String(),
+    'topEn': topTitleEn,
+    'topHi': topTitleHi,
+    'tplEn': templateTitleEn,
+    'tplHi': templateTitleHi,
+  };
 
   static SavedScan? fromJson(Map<String, Object?> json) {
     final id = json['id'];

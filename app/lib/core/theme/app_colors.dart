@@ -26,18 +26,18 @@ abstract final class AppColors {
   static const Color textMuted = Color(0xFF6F7899);
 
   static Color forRisk(RiskLevel level) => switch (level) {
-        RiskLevel.safe => safe,
-        RiskLevel.caution => caution,
-        RiskLevel.suspicious => suspicious,
-        RiskLevel.dangerous => dangerous,
-        RiskLevel.critical => critical,
-      };
+    RiskLevel.safe => safe,
+    RiskLevel.caution => caution,
+    RiskLevel.suspicious => suspicious,
+    RiskLevel.dangerous => dangerous,
+    RiskLevel.critical => critical,
+  };
 
   static Color forSeverity(Severity severity) => switch (severity) {
-        Severity.info => sky,
-        Severity.low => caution,
-        Severity.medium => suspicious,
-        Severity.high => dangerous,
-        Severity.critical => critical,
-      };
+    Severity.info => sky,
+    Severity.low => caution,
+    Severity.medium => suspicious,
+    Severity.high => dangerous,
+    Severity.critical => critical,
+  };
 }

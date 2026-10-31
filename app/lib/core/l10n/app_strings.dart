@@ -15,8 +15,7 @@ abstract final class AppStrings {
     'nav.history': 'History',
     // Scan
     'scan.hero.title': 'Check before you pay',
-    'scan.hero.body':
-        'Paste any suspicious SMS, WhatsApp message or UPI request. Every check runs on this phone — nothing is uploaded, ever.',
+    'scan.hero.body': 'Paste any suspicious SMS, WhatsApp message or UPI request. Every check runs on this phone — nothing is uploaded, ever.',
     'scan.input.hint': 'Paste the message here…',
     'scan.action.scan': 'Check this message',
     'scan.action.paste': 'Paste',
@@ -31,8 +30,7 @@ abstract final class AppStrings {
     'scan.recent.empty':
         'Your checks will appear here. Nothing leaves this phone.',
     'scan.dna.title': 'Scam DNA',
-    'scan.dna.body':
-        'Pramaan fingerprints how known scams are worded. A reworded fraud still matches.',
+    'scan.dna.body': 'Pramaan fingerprints how known scams are worded. A reworded fraud still matches.',
     'scan.tooShort': 'Add a little more text to check.',
     'scan.clipboardEmpty': 'Clipboard is empty.',
     'scan.pasted': 'Pasted from clipboard.',
@@ -46,8 +44,7 @@ abstract final class AppStrings {
     'result.confidence': 'confidence',
     'result.upi': 'UPI details found',
     'result.clean': 'No fraud signals found',
-    'result.clean.body':
-        'Still stay careful. No genuine bank ever asks for an OTP, UPI PIN, or screen access.',
+    'result.clean.body': 'Still stay careful. No genuine bank ever asks for an OTP, UPI PIN, or screen access.',
     'result.copy': 'Copy verdict',
     'result.copied': 'Verdict copied',
     'result.newScan': 'Check another',
@@ -57,8 +54,7 @@ abstract final class AppStrings {
     'result.templateSource': 'Compared against the full scam-script library',
     // UPI
     'upi.title': 'UPI inspector',
-    'upi.body':
-        'Paste a UPI link, QR payload or VPA. Pramaan decodes it offline and shows exactly what you are about to approve.',
+    'upi.body': 'Paste a UPI link, QR payload or VPA. Pramaan decodes it offline and shows exactly what you are about to approve.',
     'upi.hint': 'upi://pay?pa=… or name@bank',
     'upi.action': 'Inspect',
     'upi.operation': 'Operation',
@@ -69,8 +65,7 @@ abstract final class AppStrings {
     'upi.merchant': 'Merchant code',
     'upi.ref': 'Reference',
     'upi.warnings': 'Warnings',
-    'upi.noWarnings':
-        'No structural red flags. That does not make the payee trustworthy — money sent on UPI cannot be pulled back.',
+    'upi.noWarnings': 'No structural red flags. That does not make the payee trustworthy — money sent on UPI cannot be pulled back.',
     'upi.notUpi': 'That does not look like a UPI link or address.',
     'upi.empty': 'Paste a UPI link or VPA first.',
     'upi.handle.known': 'Registered UPI handle',
@@ -89,41 +84,32 @@ abstract final class AppStrings {
     'learn.all': 'All',
     // Emergency
     'emergency.title': 'Money already gone?',
-    'emergency.body':
-        'The first 30 minutes decide whether you get it back. Do these in order.',
+    'emergency.body': 'The first 30 minutes decide whether you get it back. Do these in order.',
     'emergency.helpline': 'National cyber fraud helpline',
     'emergency.call': 'Call 1930',
     'emergency.portal': 'cybercrime.gov.in',
     'emergency.step1.title': 'Call 1930 now',
-    'emergency.step1.body':
-        'Report the transaction ID. The sooner it is logged, the higher the chance the receiving account gets frozen.',
+    'emergency.step1.body': 'Report the transaction ID. The sooner it is logged, the higher the chance the receiving account gets frozen.',
     'emergency.step2.title': 'Ask your bank to freeze',
-    'emergency.step2.body':
-        "Call your bank's fraud line and ask them to freeze the beneficiary account — not just your card.",
+    'emergency.step2.body': "Call your bank's fraud line and ask them to freeze the beneficiary account — not just your card.",
     'emergency.step3.title': 'File on the portal',
-    'emergency.step3.body':
-        'cybercrime.gov.in → Report Financial Fraud. Keep the acknowledgement number.',
+    'emergency.step3.body': 'cybercrime.gov.in → Report Financial Fraud. Keep the acknowledgement number.',
     'emergency.step4.title': 'Secure your accounts',
-    'emergency.step4.body':
-        'Change your UPI PIN and banking passwords from a different device. Uninstall any screen-sharing app you were asked to install.',
+    'emergency.step4.body': 'Change your UPI PIN and banking passwords from a different device. Uninstall any screen-sharing app you were asked to install.',
     'emergency.step5.title': "Never pay a 'recovery agent'",
-    'emergency.step5.body':
-        'Anyone who promises to get your money back for a fee is running the second half of the same scam.',
+    'emergency.step5.body': 'Anyone who promises to get your money back for a fee is running the second half of the same scam.',
     'emergency.remember': 'Remember',
     'emergency.tip1':
         'A bank will never call and ask for your UPI PIN or OTP. Not once.',
-    'emergency.tip2':
-        'Receiving money never needs a PIN. If you are asked for one, it is a payment.',
-    'emergency.tip3':
-        'No government agency arrests people over a video call.',
+    'emergency.tip2': 'Receiving money never needs a PIN. If you are asked for one, it is a payment.',
+    'emergency.tip3': 'No government agency arrests people over a video call.',
     'emergency.tip4':
         'Screenshot and save the message before blocking the sender.',
     'emergency.copy': 'Copy checklist',
     'emergency.copied': 'Checklist copied',
     // History
     'history.title': 'Check history',
-    'history.body':
-        'Stored only on this phone. Deleting the app deletes it.',
+    'history.body': 'Stored only on this phone. Deleting the app deletes it.',
     'history.clear': 'Clear all',
     'history.clear.confirm': 'Delete every saved check?',
     'history.empty': 'Nothing saved yet.',
@@ -134,8 +120,7 @@ abstract final class AppStrings {
     'common.settings': 'Settings',
     'common.language': 'Language',
     'common.about': 'About Pramaan',
-    'common.about.body':
-        'Pramaan is free, open source, and has no servers. It cannot see your messages, your contacts, or your money.',
+    'common.about.body': 'Pramaan is free, open source, and has no servers. It cannot see your messages, your contacts, or your money.',
     'common.score': 'score',
     'common.now': 'now',
     'common.today': 'today',
@@ -155,8 +140,7 @@ abstract final class AppStrings {
     'nav.history': 'इतिहास',
     // Scan
     'scan.hero.title': 'भेजने से पहले जाँचें',
-    'scan.hero.body':
-        'कोई भी संदिग्ध SMS, WhatsApp संदेश या UPI अनुरोध पेस्ट करें। हर जाँच इसी फ़ोन पर होती है — कुछ भी अपलोड नहीं होता।',
+    'scan.hero.body': 'कोई भी संदिग्ध SMS, WhatsApp संदेश या UPI अनुरोध पेस्ट करें। हर जाँच इसी फ़ोन पर होती है — कुछ भी अपलोड नहीं होता।',
     'scan.input.hint': 'संदेश यहाँ पेस्ट करें…',
     'scan.action.scan': 'इस संदेश की जाँच करें',
     'scan.action.paste': 'पेस्ट करें',
@@ -171,8 +155,7 @@ abstract final class AppStrings {
     'scan.recent.empty':
         'आपकी जाँच यहाँ दिखेगी। कुछ भी इस फ़ोन से बाहर नहीं जाता।',
     'scan.dna.title': 'ठगी का डीएनए',
-    'scan.dna.body':
-        'प्रमाण जानी-पहचानी ठगी की शब्दावली की छाप लेता है। बदले शब्दों वाली ठगी भी पकड़ी जाती है।',
+    'scan.dna.body': 'प्रमाण जानी-पहचानी ठगी की शब्दावली की छाप लेता है। बदले शब्दों वाली ठगी भी पकड़ी जाती है।',
     'scan.tooShort': 'जाँच के लिए थोड़ा और पाठ जोड़ें।',
     'scan.clipboardEmpty': 'क्लिपबोर्ड खाली है।',
     'scan.pasted': 'क्लिपबोर्ड से पेस्ट हो गया।',
@@ -186,8 +169,7 @@ abstract final class AppStrings {
     'result.confidence': 'विश्वास',
     'result.upi': 'मिले UPI विवरण',
     'result.clean': 'कोई ठगी संकेत नहीं मिला',
-    'result.clean.body':
-        'फिर भी सावधान रहें। कोई असली बैंक OTP, UPI पिन या स्क्रीन एक्सेस नहीं माँगता।',
+    'result.clean.body': 'फिर भी सावधान रहें। कोई असली बैंक OTP, UPI पिन या स्क्रीन एक्सेस नहीं माँगता।',
     'result.copy': 'निर्णय कॉपी करें',
     'result.copied': 'निर्णय कॉपी हो गया',
     'result.newScan': 'दूसरा जाँचें',
@@ -197,8 +179,7 @@ abstract final class AppStrings {
     'result.templateSource': 'पूरी ठगी-स्क्रिप्ट लाइब्रेरी से तुलना',
     // UPI
     'upi.title': 'UPI जाँच',
-    'upi.body':
-        'UPI लिंक, QR पेलोड या VPA पेस्ट करें। प्रमाण इसे ऑफ़लाइन पढ़कर दिखाता है कि आप क्या मंज़ूर करने जा रहे हैं।',
+    'upi.body': 'UPI लिंक, QR पेलोड या VPA पेस्ट करें। प्रमाण इसे ऑफ़लाइन पढ़कर दिखाता है कि आप क्या मंज़ूर करने जा रहे हैं।',
     'upi.hint': 'upi://pay?pa=… या name@bank',
     'upi.action': 'जाँचें',
     'upi.operation': 'कार्य',
@@ -209,8 +190,7 @@ abstract final class AppStrings {
     'upi.merchant': 'मर्चेंट कोड',
     'upi.ref': 'संदर्भ',
     'upi.warnings': 'चेतावनियाँ',
-    'upi.noWarnings':
-        'ढाँचे में कोई खतरा नहीं मिला। इसका मतलब यह नहीं कि प्राप्तकर्ता भरोसेमंद है — UPI से भेजा पैसा वापस नहीं आता।',
+    'upi.noWarnings': 'ढाँचे में कोई खतरा नहीं मिला। इसका मतलब यह नहीं कि प्राप्तकर्ता भरोसेमंद है — UPI से भेजा पैसा वापस नहीं आता।',
     'upi.notUpi': 'यह UPI लिंक या पता नहीं लगता।',
     'upi.empty': 'पहले UPI लिंक या VPA पेस्ट करें।',
     'upi.handle.known': 'पंजीकृत UPI हैंडल',
@@ -219,8 +199,7 @@ abstract final class AppStrings {
     'upi.sample': 'नमूना आज़माएँ',
     // Learn
     'learn.title': 'ठगी पुस्तकालय',
-    'learn.body':
-        'हर नमूना ऐप के अंदर ही है। एक बार पढ़ें, हमेशा पहचानें।',
+    'learn.body': 'हर नमूना ऐप के अंदर ही है। एक बार पढ़ें, हमेशा पहचानें।',
     'learn.search': 'ठगी खोजें',
     'learn.redFlags': 'खतरे के संकेत',
     'learn.example': 'असली संदेश',
@@ -229,41 +208,32 @@ abstract final class AppStrings {
     'learn.all': 'सभी',
     // Emergency
     'emergency.title': 'पैसा चला गया?',
-    'emergency.body':
-        'पहले 30 मिनट तय करते हैं कि पैसा वापस मिलेगा या नहीं। ये क्रम से करें।',
+    'emergency.body': 'पहले 30 मिनट तय करते हैं कि पैसा वापस मिलेगा या नहीं। ये क्रम से करें।',
     'emergency.helpline': 'राष्ट्रीय साइबर ठगी हेल्पलाइन',
     'emergency.call': '1930 पर कॉल करें',
     'emergency.portal': 'cybercrime.gov.in',
     'emergency.step1.title': 'अभी 1930 पर कॉल करें',
-    'emergency.step1.body':
-        'लेन-देन आईडी बताएँ। जितनी जल्दी शिकायत दर्ज होगी, उतनी जल्दी पैसा लेने वाला खाता फ्रीज़ हो सकता है।',
+    'emergency.step1.body': 'लेन-देन आईडी बताएँ। जितनी जल्दी शिकायत दर्ज होगी, उतनी जल्दी पैसा लेने वाला खाता फ्रीज़ हो सकता है।',
     'emergency.step2.title': 'बैंक से रोकें',
-    'emergency.step2.body':
-        'अपने बैंक की फ्रॉड लाइन पर कॉल करें और पैसा लेने वाला खाता फ्रीज़ करने को कहें — सिर्फ़ कार्ड नहीं।',
+    'emergency.step2.body': 'अपने बैंक की फ्रॉड लाइन पर कॉल करें और पैसा लेने वाला खाता फ्रीज़ करने को कहें — सिर्फ़ कार्ड नहीं।',
     'emergency.step3.title': 'पोर्टल पर शिकायत',
-    'emergency.step3.body':
-        'cybercrime.gov.in → Report Financial Fraud। पावती संख्या संभालकर रखें।',
+    'emergency.step3.body': 'cybercrime.gov.in → Report Financial Fraud। पावती संख्या संभालकर रखें।',
     'emergency.step4.title': 'खाते सुरक्षित करें',
-    'emergency.step4.body':
-        'दूसरे डिवाइस से UPI पिन और बैंक पासवर्ड बदलें। जो स्क्रीन-शेयरिंग ऐप इंस्टॉल किया था उसे हटाएँ।',
+    'emergency.step4.body': 'दूसरे डिवाइस से UPI पिन और बैंक पासवर्ड बदलें। जो स्क्रीन-शेयरिंग ऐप इंस्टॉल किया था उसे हटाएँ।',
     'emergency.step5.title': "'रिकवरी एजेंट' को पैसा न दें",
-    'emergency.step5.body':
-        'फीस लेकर पैसा वापस दिलाने का वादा करने वाले उसी ठगी का दूसरा हिस्सा हैं।',
+    'emergency.step5.body': 'फीस लेकर पैसा वापस दिलाने का वादा करने वाले उसी ठगी का दूसरा हिस्सा हैं।',
     'emergency.remember': 'याद रखें',
     'emergency.tip1':
         'बैंक कभी फ़ोन करके UPI पिन या OTP नहीं माँगता। कभी नहीं।',
-    'emergency.tip2':
-        'पैसा लेने के लिए पिन कभी नहीं लगता। अगर पिन माँगा जाए, तो वह भुगतान है।',
-    'emergency.tip3':
-        'कोई सरकारी एजेंसी वीडियो कॉल पर गिरफ़्तार नहीं करती।',
+    'emergency.tip2': 'पैसा लेने के लिए पिन कभी नहीं लगता। अगर पिन माँगा जाए, तो वह भुगतान है।',
+    'emergency.tip3': 'कोई सरकारी एजेंसी वीडियो कॉल पर गिरफ़्तार नहीं करती।',
     'emergency.tip4':
         'भेजने वाले को ब्लॉक करने से पहले संदेश का स्क्रीनशॉट रखें।',
     'emergency.copy': 'सूची कॉपी करें',
     'emergency.copied': 'सूची कॉपी हो गई',
     // History
     'history.title': 'जाँच इतिहास',
-    'history.body':
-        'सिर्फ़ इसी फ़ोन पर संग्रहीत। ऐप हटाने पर मिट जाएगा।',
+    'history.body': 'सिर्फ़ इसी फ़ोन पर संग्रहीत। ऐप हटाने पर मिट जाएगा।',
     'history.clear': 'सब मिटाएँ',
     'history.clear.confirm': 'सभी सहेजी गई जाँच मिटाएँ?',
     'history.empty': 'अभी कुछ सहेजा नहीं गया।',
@@ -274,8 +244,7 @@ abstract final class AppStrings {
     'common.settings': 'सेटिंग्स',
     'common.language': 'भाषा',
     'common.about': 'प्रमाण के बारे में',
-    'common.about.body':
-        'प्रमाण मुफ़्त, ओपन सोर्स और बिना सर्वर है। यह आपके संदेश, संपर्क या पैसे नहीं देख सकता।',
+    'common.about.body': 'प्रमाण मुफ़्त, ओपन सोर्स और बिना सर्वर है। यह आपके संदेश, संपर्क या पैसे नहीं देख सकता।',
     'common.score': 'स्कोर',
     'common.now': 'अभी',
     'common.today': 'आज',

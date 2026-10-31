@@ -105,11 +105,35 @@ const Map<String, String> _devanagariMap = <String, String>{
 /// Cyrillic / Greek characters that render identically to Latin ones. Scammers
 /// use them to slip past keyword filters ("аmazon" with a Cyrillic а).
 const Map<String, String> _homoglyphs = <String, String>{
-  'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p', 'с': 'c', 'х': 'x',
-  'у': 'y', 'і': 'i', 'ѕ': 's', 'ԁ': 'd', 'м': 'm', 'т': 't',
-  'н': 'h', 'в': 'b', 'к': 'k', 'ѵ': 'v', 'ԛ': 'q', 'ԝ': 'w',
-  'α': 'a', 'ο': 'o', 'ν': 'v', 'ρ': 'p', 'τ': 't', 'κ': 'k',
-  'μ': 'u', 'χ': 'x', 'γ': 'y', 'ε': 'e', 'ι': 'i',
+  'а': 'a',
+  'е': 'e',
+  'о': 'o',
+  'р': 'p',
+  'с': 'c',
+  'х': 'x',
+  'у': 'y',
+  'і': 'i',
+  'ѕ': 's',
+  'ԁ': 'd',
+  'м': 'm',
+  'т': 't',
+  'н': 'h',
+  'в': 'b',
+  'к': 'k',
+  'ѵ': 'v',
+  'ԛ': 'q',
+  'ԝ': 'w',
+  'α': 'a',
+  'ο': 'o',
+  'ν': 'v',
+  'ρ': 'p',
+  'τ': 't',
+  'κ': 'k',
+  'μ': 'u',
+  'χ': 'x',
+  'γ': 'y',
+  'ε': 'e',
+  'ι': 'i',
 };
 
 final RegExp _zeroWidth = RegExp(r'[\u200B-\u200F\u202A-\u202E\uFEFF]');
@@ -127,7 +151,9 @@ final RegExp _bareDomain = RegExp(
   r'(?:com|in|net|org|xyz|top|club|site|online|info|co|io|app|link|live|icu|'
   r'buzz|shop|vip|cc|tk|ml|ga|cf|gq|work|rest|fit|best|life|world|today|'
   r'space|fun|store|pro|dev|me|su|bid|win|download|zip|mov|help|click)\b'
-  r'(?:/[^\s<>"' "'" r']*)?',
+  r'(?:/[^\s<>"'
+  "'"
+  r']*)?',
   caseSensitive: false,
 );
 final RegExp _upiAddress = RegExp(
@@ -213,8 +239,7 @@ abstract final class TextNormalizer {
   static List<double> amounts(String input) {
     final List<double> found = <double>[];
     for (final RegExpMatch m in _amountPattern.allMatches(input)) {
-      final double? value =
-          double.tryParse(m.group(1)!.replaceAll(',', ''));
+      final double? value = double.tryParse(m.group(1)!.replaceAll(',', ''));
       if (value != null) found.add(value);
     }
     return found;

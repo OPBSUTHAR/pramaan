@@ -31,8 +31,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'KYC एक्सपायर, खाता बंद हो जाएगा',
     familyEn: 'KYC / account block',
     familyHi: 'KYC / खाता बंद',
-    body:
-        'dear customer your kyc has expired and your account will be blocked '
+    body: 'dear customer your kyc has expired and your account will be blocked '
         'today update your kyc immediately by clicking the link below to avoid '
         'account suspension',
   ),
@@ -42,8 +41,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'नेट बैंकिंग लॉक, पहचान सत्यापित करें',
     familyEn: 'KYC / account block',
     familyHi: 'KYC / खाता बंद',
-    body:
-        'dear customer your net banking has been locked for security reasons '
+    body: 'dear customer your net banking has been locked for security reasons '
         'please verify your identity by clicking this link within 24 hours '
         'otherwise your account will be deactivated',
   ),
@@ -115,8 +113,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'पार्ट टाइम नौकरी, वीडियो लाइक करें रोज़ कमाएं',
     familyEn: 'Job & task',
     familyHi: 'नौकरी और टास्क',
-    body:
-        'part time job available work from home and earn rs 3000 daily just '
+    body: 'part time job available work from home and earn rs 3000 daily just '
         'like youtube videos and complete simple tasks join our telegram group '
         'no experience needed',
   ),
@@ -235,8 +232,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'इनाम के लिए कूरियर चार्ज दें',
     familyEn: 'Prize & lottery',
     familyHi: 'इनाम और लॉटरी',
-    body:
-        'you are the lucky winner of our mega draw send rs 5000 as courier '
+    body: 'you are the lucky winner of our mega draw send rs 5000 as courier '
         'charges and your gift will be delivered to your address within 3 days',
   ),
   ScamTemplate(
@@ -255,8 +251,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'लोन मंज़ूर, प्रोसेसिंग फीस दें',
     familyEn: 'Loan',
     familyHi: 'लोन',
-    body:
-        'congratulations your loan of rs 5 lakh is approved by rbi pay the '
+    body: 'congratulations your loan of rs 5 lakh is approved by rbi pay the '
         'processing fee of rs 2500 and the amount will be credited to your '
         'account today',
   ),
@@ -318,8 +313,7 @@ const List<ScamTemplate> builtInTemplates = <ScamTemplate>[
     titleHi: 'नकली खरीदार कलेक्ट रिक्वेस्ट भेजता है',
     familyEn: 'Collect request / QR',
     familyHi: 'कलेक्ट रिक्वेस्ट / QR',
-    body:
-        'i am interested in your item i will send you the payment right now '
+    body: 'i am interested in your item i will send you the payment right now '
         'please accept the collect request and enter your upi pin to receive the '
         'amount',
   ),

@@ -135,9 +135,7 @@ class _HistoryTile extends StatelessWidget {
       onTap: () {
         final report = Engine.scan(item.input);
         Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (_) => ResultScreen(report: report),
-          ),
+          MaterialPageRoute<void>(builder: (_) => ResultScreen(report: report)),
         );
       },
       child: Container(

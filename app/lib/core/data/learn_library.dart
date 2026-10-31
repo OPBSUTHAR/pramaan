@@ -32,7 +32,11 @@ const FamilyGuide _fallback = FamilyGuide(
       'या कोड बताने पर मजबूर करे, वह आपकी सोच को बायपास करने के लिए है। असली ऐप '
       'या खुद खोजे गए नंबर से पुष्टि करें।',
   flagsEn: ['Urgency', 'A fee before a benefit', 'A link or app to install'],
-  flagsHi: ['जल्दबाज़ी', 'फ़ायदे से पहले फीस', 'लिंक या ऐप इंस्टॉल करने को कहना'],
+  flagsHi: [
+    'जल्दबाज़ी',
+    'फ़ायदे से पहले फीस',
+    'लिंक या ऐप इंस्टॉल करने को कहना',
+  ],
 );
 
 const Map<String, FamilyGuide> familyGuides = {

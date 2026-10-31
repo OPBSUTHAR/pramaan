@@ -6,8 +6,8 @@ import '../text/normalizer.dart';
 /// tokenising, link extraction, Unicode folding) happens exactly once per scan.
 class ScanContext {
   ScanContext(String raw)
-    : raw = raw.trim(),
-      text = TextNormalizer.canonical(raw);
+      : raw = raw.trim(),
+        text = TextNormalizer.canonical(raw);
 
   /// The message exactly as the user pasted it. Used for evidence highlighting.
   final String raw;
@@ -72,11 +72,13 @@ class ScanContext {
   }
 
   /// The first matched substring for [pattern], or null.
-  String? findFirst(RegExp pattern) => pattern.firstMatch(text)?.group(0)?.trim();
+  String? findFirst(RegExp pattern) =>
+      pattern.firstMatch(text)?.group(0)?.trim();
 
   /// Largest rupee amount mentioned, or null.
-  double? get largestAmount =>
-      amounts.isEmpty ? null : amounts.reduce((double a, double b) => a > b ? a : b);
+  double? get largestAmount => amounts.isEmpty
+      ? null
+      : amounts.reduce((double a, double b) => a > b ? a : b);
 
   /// True when the message contains a UPI deep link or QR payload.
   bool get containsUpiLink =>

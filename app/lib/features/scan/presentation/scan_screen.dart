@@ -77,9 +77,7 @@ class _ScanScreenState extends State<ScanScreen> {
 
     setState(() => _scanning = false);
     await Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => ResultScreen(report: report),
-      ),
+      MaterialPageRoute<void>(builder: (_) => ResultScreen(report: report)),
     );
     if (!mounted) return;
     setState(() {});
@@ -695,9 +693,7 @@ class _RecentTile extends StatelessWidget {
       onTap: () {
         final report = Engine.scan(item.input);
         Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (_) => ResultScreen(report: report),
-          ),
+          MaterialPageRoute<void>(builder: (_) => ResultScreen(report: report)),
         );
       },
       child: Container(

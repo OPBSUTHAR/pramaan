@@ -72,7 +72,8 @@ void main() {
         'अभी क्लिक करें।',
       );
       expect(report.score, greaterThanOrEqualTo(35));
-      expect(report.level.index, greaterThanOrEqualTo(RiskLevel.suspicious.index));
+      expect(
+          report.level.index, greaterThanOrEqualTo(RiskLevel.suspicious.index));
     });
 
     test('remote-access support scam', () {
@@ -90,7 +91,8 @@ void main() {
 
   group('false positives', () {
     const Map<String, String> benign = <String, String>{
-      'family chat': 'Hi mom, I will be late tonight. Please keep dinner aside.',
+      'family chat':
+          'Hi mom, I will be late tonight. Please keep dinner aside.',
       'team chat': 'Team lunch is at 1pm in the cafeteria. See you there.',
       'delivery notice': 'Your Amazon order has been delivered. Thanks for '
           'shopping with us.',
@@ -102,7 +104,8 @@ void main() {
     benign.forEach((String name, String message) {
       test('does not alarm on $name', () {
         final ScanReport report = scanner.scan(message);
-        expect(report.score, lessThan(35), reason: '$name scored ${report.score}');
+        expect(report.score, lessThan(35),
+            reason: '$name scored ${report.score}');
       });
     });
 

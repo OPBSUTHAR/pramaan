@@ -61,8 +61,9 @@ abstract final class RiskScorer {
     }
 
     if (templateMatch != null) {
-      final double w =
-          (templateMatch.similarity * templateWeight).clamp(0.0, 0.95).toDouble();
+      final double w = (templateMatch.similarity * templateWeight)
+          .clamp(0.0, 0.95)
+          .toDouble();
       remaining *= 1 - w;
     }
 

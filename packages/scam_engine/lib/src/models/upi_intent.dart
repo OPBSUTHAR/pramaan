@@ -17,23 +17,24 @@ enum UpiOperation {
   unknown;
 
   String get labelEn => switch (this) {
-    UpiOperation.pay => 'Pay request',
-    UpiOperation.mandate => 'Auto-debit mandate',
-    UpiOperation.collect => 'Collect (debit) request',
-    UpiOperation.unknown => 'Unknown request',
-  };
+        UpiOperation.pay => 'Pay request',
+        UpiOperation.mandate => 'Auto-debit mandate',
+        UpiOperation.collect => 'Collect (debit) request',
+        UpiOperation.unknown => 'Unknown request',
+      };
 
   String get labelHi => switch (this) {
-    UpiOperation.pay => 'भुगतान अनुरोध',
-    UpiOperation.mandate => 'ऑटो-डेबिट मैंडेट',
-    UpiOperation.collect => 'कलेक्ट (डेबिट) अनुरोध',
-    UpiOperation.unknown => 'अज्ञात अनुरोध',
-  };
+        UpiOperation.pay => 'भुगतान अनुरोध',
+        UpiOperation.mandate => 'ऑटो-डेबिट मैंडेट',
+        UpiOperation.collect => 'कलेक्ट (डेबिट) अनुरोध',
+        UpiOperation.unknown => 'अज्ञात अनुरोध',
+      };
 }
 
 /// A parsed `name@handle` UPI address.
 class Vpa {
-  const Vpa({required this.address, required this.username, required this.handle});
+  const Vpa(
+      {required this.address, required this.username, required this.handle});
 
   /// The full address as written, e.g. `omprakash@okhdfcbank`.
   final String address;
@@ -65,9 +66,9 @@ class UpiWarning {
   final String messageHi;
 
   Map<String, Object?> toJson() => <String, Object?>{
-    'code': code,
-    'severity': severity.name,
-  };
+        'code': code,
+        'severity': severity.name,
+      };
 }
 
 /// Everything we could pull out of a UPI link or QR payload, fully offline.

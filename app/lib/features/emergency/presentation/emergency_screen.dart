@@ -395,8 +395,7 @@ class _StepTile extends StatelessWidget {
                         fontSize: 14.5,
                         fontWeight: FontWeight.w700,
                         height: 1.35,
-                        decoration:
-                            done ? TextDecoration.lineThrough : null,
+                        decoration: done ? TextDecoration.lineThrough : null,
                         decorationColor: AppColors.textMuted,
                         color: done
                             ? AppColors.textMuted
