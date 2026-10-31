@@ -1,19 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/l10n.dart';
+import '../services/preview_controller.dart';
 import '../theme/app_colors.dart';
-
-/// How the app is presented inside a desktop browser.
-enum PreviewMode {
-  /// 412 x 892 logical pixels - a modern Android phone.
-  phone,
-
-  /// 834 x 1112 logical pixels - a small Android tablet.
-  tablet,
-
-  /// No frame at all; the app fills the window.
-  full,
-}
 
 /// Frames the app in a centred Android device when it is opened in a wide
 /// browser window.
@@ -23,7 +13,11 @@ enum PreviewMode {
 /// platform is web and the viewport is at least 900 logical pixels wide, which
 /// is exactly the case where a mobile-first layout would otherwise stretch
 /// across a desktop monitor.
-class WebShowcase extends StatefulWidget {
+///
+/// The chosen mode lives in [PreviewController] so it can be changed from the
+/// pill under the frame, from the floating pill in full-width mode, or from
+/// Settings.
+class WebShowcase extends StatelessWidget {
   const WebShowcase({required this.child, super.key});
 
   final Widget child;
@@ -31,26 +25,60 @@ class WebShowcase extends StatefulWidget {
   /// Width at which the framed presentation takes over.
   static const double breakpoint = 900;
 
-  @override
-  State<WebShowcase> createState() => _WebShowcaseState();
-}
-
-class _WebShowcaseState extends State<WebShowcase> {
-  PreviewMode _mode = PreviewMode.phone;
-
   static const Size _phone = Size(412, 892);
   static const Size _tablet = Size(834, 1112);
 
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
-    final framed = kIsWeb && media.size.width >= WebShowcase.breakpoint;
+    final wide = kIsWeb && media.size.width >= breakpoint;
+    if (!wide) return child;
 
-    if (!framed || _mode == PreviewMode.full) {
-      return widget.child;
+    final controller = PreviewScope.maybeOf(context);
+    final mode = controller?.mode ?? PreviewMode.phone;
+    void select(PreviewMode next) => controller?.setMode(next);
+
+    if (mode == PreviewMode.full) {
+      // Full width hides the frame. The way back to a framed view must stay
+      // reachable even when the browser chrome hides (mobile/scroll), so we
+      // keep a clearly labeled switch at BOTH the top and the bottom edge;
+      // the phone icon is the most prominent of the three so it cannot be
+      // missed.
+      return Stack(
+        children: [
+          Positioned.fill(child: child),
+          // Top, compact switch (visible when address bar is shown).
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: PreviewModeSwitch(
+                  mode: mode,
+                  onChanged: select,
+                  compact: true,
+                ),
+              ),
+            ),
+          ),
+          // Bottom, full switch (always shows all three labels).
+          SafeArea(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: PreviewModeSwitch(
+                  mode: mode,
+                  onChanged: select,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
     }
 
-    final size = _mode == PreviewMode.tablet ? _tablet : _phone;
+    final size = mode == PreviewMode.tablet ? _tablet : _phone;
 
     return ColoredBox(
       color: AppColors.ink,
@@ -76,7 +104,7 @@ class _WebShowcaseState extends State<WebShowcase> {
                               viewInsets: EdgeInsets.zero,
                               systemGestureInsets: EdgeInsets.zero,
                             ),
-                            child: widget.child,
+                            child: child,
                           ),
                         ),
                       ),
@@ -84,10 +112,7 @@ class _WebShowcaseState extends State<WebShowcase> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 18),
-                    child: _ModeSwitch(
-                      mode: _mode,
-                      onChanged: (mode) => setState(() => _mode = mode),
-                    ),
+                    child: PreviewModeSwitch(mode: mode, onChanged: select),
                   ),
                 ],
               ),
@@ -175,11 +200,23 @@ class _Backdrop extends StatelessWidget {
   }
 }
 
-class _ModeSwitch extends StatelessWidget {
-  const _ModeSwitch({required this.mode, required this.onChanged});
+/// Segmented control for [PreviewMode].
+///
+/// Shown under the device frame, floating over the app in full-width mode, and
+/// reused in Settings so the current presentation is always visible.
+class PreviewModeSwitch extends StatelessWidget {
+  const PreviewModeSwitch({
+    required this.mode,
+    required this.onChanged,
+    this.compact = false,
+    super.key,
+  });
 
   final PreviewMode mode;
   final ValueChanged<PreviewMode> onChanged;
+
+  /// Icon-only variant, used when the control floats over the app.
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -200,53 +237,80 @@ class _ModeSwitch extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _segment(PreviewMode.phone, Icons.smartphone, 'Phone'),
+          _segment(
+            context,
+            PreviewMode.phone,
+            Icons.smartphone,
+            'display.phone',
+          ),
           const SizedBox(width: 4),
-          _segment(PreviewMode.tablet, Icons.tablet_mac, 'Tablet'),
+          _segment(
+            context,
+            PreviewMode.tablet,
+            Icons.tablet_mac,
+            'display.tablet',
+          ),
           const SizedBox(width: 4),
-          _segment(PreviewMode.full, Icons.open_in_full, 'Full'),
+          _segment(
+            context,
+            PreviewMode.full,
+            Icons.open_in_full,
+            'display.full',
+          ),
         ],
       ),
     );
   }
 
-  Widget _segment(PreviewMode value, IconData icon, String label) {
+  Widget _segment(
+    BuildContext context,
+    PreviewMode value,
+    IconData icon,
+    String labelKey,
+  ) {
     final selected = mode == value;
+    final label = context.t(labelKey);
+    final foreground = selected ? AppColors.ink : AppColors.textSecondary;
 
-    return Semantics(
-      button: true,
-      selected: selected,
-      label: '$label preview',
-      child: GestureDetector(
-        onTap: () => onChanged(value),
-        behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          curve: Curves.easeOut,
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-          decoration: BoxDecoration(
-            color: selected ? AppColors.saffron : Colors.transparent,
-            borderRadius: BorderRadius.circular(999),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: 15,
-                color: selected ? AppColors.ink : AppColors.textSecondary,
-              ),
-              const SizedBox(width: 7),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 12.5,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.2,
-                  color: selected ? AppColors.ink : AppColors.textSecondary,
-                ),
-              ),
-            ],
+    return Tooltip(
+      message: label,
+      waitDuration: const Duration(milliseconds: 400),
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: label,
+        child: GestureDetector(
+          onTap: () => onChanged(value),
+          behavior: HitTestBehavior.opaque,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
+            padding: EdgeInsets.symmetric(
+              horizontal: compact ? 12 : 14,
+              vertical: 9,
+            ),
+            decoration: BoxDecoration(
+              color: selected ? AppColors.saffron : Colors.transparent,
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 15, color: foreground),
+                if (!compact) ...[
+                  const SizedBox(width: 7),
+                  Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                      color: foreground,
+                    ),
+                  ),
+                ],
+              ],
+            ),
           ),
         ),
       ),
