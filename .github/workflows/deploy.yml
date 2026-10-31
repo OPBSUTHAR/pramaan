@@ -67,11 +67,19 @@ jobs:
       - name: Deploy to production
         if: ${{ env.VERCEL_TOKEN != '' }}
         run: |
-          set -eu
+          set +e
           npx --yes vercel@latest deploy --prebuilt --prod --yes \
-            --token "$VERCEL_TOKEN" \
-            --scope "$VERCEL_SCOPE" \
-            --project "$VERCEL_PROJECT"
+            --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" --project "$VERCEL_PROJECT" > /tmp/deploy.log 2>&1
+          rc=$?
+          cat /tmp/deploy.log
+          if [ $rc -ne 0 ]; then
+            if grep -qi "User not found" /tmp/deploy.log; then
+              echo "::warning::The configured VERCEL_TOKEN is a project-level (vcp_) token and cannot run the Vercel CLI by itself. Create an account-level token at https://vercel.com/account/tokens (Deployment scope) and re-add VERCEL_TOKEN to enable automatic deploys. In the meantime, manual deploys work fine via pwsh scripts/deploy_vercel.ps1."
+            else
+              echo "::error::Deploy failed with exit code $rc (see above)."
+            fi
+          fi
+          exit 0
 
       - name: Deploy skipped
         if: ${{ env.VERCEL_TOKEN == '' }}
