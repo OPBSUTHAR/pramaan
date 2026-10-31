@@ -325,9 +325,7 @@ class _LanguageOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final foreground = selected
-        ? AppColors.saffron
-        : AppColors.textSecondary;
+    final foreground = selected ? AppColors.saffron : AppColors.textSecondary;
 
     return Expanded(
       child: InkWell(
@@ -342,9 +340,7 @@ class _LanguageOption extends StatelessWidget {
                 : AppColors.ink,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: selected
-                  ? AppColors.saffron
-                  : AppColors.inkLine,
+              color: selected ? AppColors.saffron : AppColors.inkLine,
             ),
           ),
           child: Text(

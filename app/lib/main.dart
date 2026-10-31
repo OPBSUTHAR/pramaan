@@ -17,7 +17,9 @@ Future<void> main() async {
   final preview = PreviewController();
   try {
     final prefs = await SharedPreferences.getInstance();
-    debugPrint('PROBE keys=${prefs.getKeys()} raw=${prefs.getString('pramaan.language')}');
+    debugPrint(
+      'PROBE keys=${prefs.getKeys()} raw=${prefs.getString('pramaan.language')}',
+    );
   } catch (error) {
     debugPrint('PROBE error=$error');
   }

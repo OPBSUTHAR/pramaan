@@ -67,10 +67,7 @@ class WebShowcase extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 12),
-                child: PreviewModeSwitch(
-                  mode: mode,
-                  onChanged: select,
-                ),
+                child: PreviewModeSwitch(mode: mode, onChanged: select),
               ),
             ),
           ),
