@@ -81,7 +81,11 @@ class WebShowcase extends StatelessWidget {
       color: AppColors.ink,
       child: Stack(
         children: [
-          Positioned.fill(child: IgnorePointer(child: RepaintBoundary(child: const _Backdrop()))),
+          Positioned.fill(
+            child: IgnorePointer(
+              child: RepaintBoundary(child: const _Backdrop()),
+            ),
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
