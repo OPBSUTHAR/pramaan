@@ -55,6 +55,10 @@ jobs:
       - name: Prepare prebuilt output
         run: |
           set -eu
+          # Replace Flutter's cache-poisoning service worker with our
+          # self-terminating one so already-installed workers evict their
+          # stale cache and unregister (Fixes "blank white on reload").
+          cp app/web/flutter_service_worker.js app/build/web/flutter_service_worker.js
           mkdir -p .vercel/output
           rm -rf .vercel/output/static
           cp -r app/build/web .vercel/output/static

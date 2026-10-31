@@ -26,12 +26,21 @@ if (-not $SkipBuild) {
   $env:Path = "$flutterBin;$dartBin;" + $env:Path
 
   Push-Location "$root\app"
-  Write-Host "── flutter pub get ──" -ForegroundColor Cyan
+  Write-Host "flutter pub get" -ForegroundColor Cyan
   flutter pub get
-  Write-Host "── flutter test ──" -ForegroundColor Cyan
+  Write-Host "flutter test" -ForegroundColor Cyan
   flutter test
-  Write-Host "── flutter build web --release ──" -ForegroundColor Cyan
+  Write-Host "flutter build web --release" -ForegroundColor Cyan
   flutter build web --release
+
+  # Override Flutter's cache-poisoning service worker with our clearing one
+  # (Fixes "blank white on reload" - stale main.dart.js served from cache).
+  $customSw = "$root\app\web\flutter_service_worker.js"
+  if (Test-Path $customSw) {
+    Write-Host "overriding flutter_service_worker.js" -ForegroundColor Cyan
+    Copy-Item $customSw "$root\app\build\web\flutter_service_worker.js" -Force
+  }
+
   Pop-Location
 }
 
@@ -43,10 +52,10 @@ if (-not (Test-Path "$web\index.html")) {
 
 Push-Location $web
 try {
-  Write-Host "── vercel link ──" -ForegroundColor Cyan
+  Write-Host "vercel link" -ForegroundColor Cyan
   npx --yes vercel@latest link --yes --project $Project --scope $Scope
 
-  Write-Host "── vercel deploy --prod ──" -ForegroundColor Cyan
+  Write-Host "vercel deploy --prod" -ForegroundColor Cyan
   npx --yes vercel@latest deploy --prod --yes --scope $Scope
 }
 finally {
