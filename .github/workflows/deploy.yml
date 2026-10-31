@@ -1,0 +1,75 @@
+# Build the Flutter web bundle and publish it to Vercel.
+#
+# The build always runs so a broken web bundle fails CI. The deploy step is
+# skipped until a Vercel access token is added as a repository secret:
+#   Settings → Secrets and variables → Actions → New repository secret
+#   Name: VERCEL_TOKEN   Value: <token from https://vercel.com/account/tokens>
+#
+# Optional repository variables (only if the defaults are wrong):
+#   VERCEL_SCOPE  - Vercel team slug (defaults to `suthara`)
+#   VERCEL_PROJECT - Vercel project name (defaults to `pramaan`)
+#
+# The token is passed through the environment and never printed.
+name: Deploy web
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'packages/**'
+      - 'vercel.json'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'OPBSUTHAR' }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_SCOPE: ${{ vars.VERCEL_SCOPE || 'suthara' }}
+      VERCEL_PROJECT: ${{ vars.VERCEL_PROJECT || 'pramaan' }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Build web bundle
+        working-directory: app
+        run: |
+          flutter pub get
+          flutter test
+          flutter build web --release
+
+      - name: Prepare prebuilt output
+        run: |
+          set -eu
+          mkdir -p .vercel/output
+          rm -rf .vercel/output/static
+          cp -r app/build/web .vercel/output/static
+          printf '{"version":3}\n' > .vercel/output/config.json
+
+      - name: Deploy to production
+        if: ${{ env.VERCEL_TOKEN != '' }}
+        run: |
+          set -eu
+          npx --yes vercel@latest deploy --prebuilt --prod --yes \
+            --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
+
+      - name: Deploy skipped
+        if: ${{ env.VERCEL_TOKEN == '' }}
+        run: |
+          echo "::notice::VERCEL_TOKEN is not set, so the bundle was built but not deployed."
+          echo "Add the secret to enable automatic deploys: Settings -> Secrets and variables -> Actions."

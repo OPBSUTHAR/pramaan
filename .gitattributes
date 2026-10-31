@@ -1,0 +1,24 @@
+# Normalise line endings so `dart format --set-exit-if-changed` behaves the
+# same on Windows, macOS and the Linux CI runners.
+* text=auto eol=lf
+
+# Binary assets must never be converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.jar binary
+*.zip binary
+*.apk binary
+*.aab binary
+
+# Keep PowerShell scripts CRLF-friendly on Windows checkouts.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
