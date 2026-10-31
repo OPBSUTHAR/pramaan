@@ -44,9 +44,13 @@
     flutter-view, flt-scene-host, canvas {
       -webkit-user-select: none;
       user-select: none;
+      contain: strict;
     }
     * {
       -webkit-tap-highlight-color: transparent;
+    }
+    *::-webkit-scrollbar {
+      display: none;
     }
   </style>
   <title>Pramaan — Proof before you pay.</title>
