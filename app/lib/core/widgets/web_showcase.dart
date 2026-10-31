@@ -58,36 +58,39 @@ class _WebShowcaseState extends State<WebShowcase> {
         children: [
           const Positioned.fill(child: _Backdrop()),
           SafeArea(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: _DeviceShell(
-                        size: size,
-                        child: MediaQuery(
-                          data: media.copyWith(
-                            size: size,
-                            padding: EdgeInsets.zero,
-                            viewPadding: EdgeInsets.zero,
-                            viewInsets: EdgeInsets.zero,
-                            systemGestureInsets: EdgeInsets.zero,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: _DeviceShell(
+                          size: size,
+                          child: MediaQuery(
+                            data: media.copyWith(
+                              size: size,
+                              padding: EdgeInsets.zero,
+                              viewPadding: EdgeInsets.zero,
+                              viewInsets: EdgeInsets.zero,
+                              systemGestureInsets: EdgeInsets.zero,
+                            ),
+                            child: widget.child,
                           ),
-                          child: widget.child,
                         ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 20),
-                  child: _ModeSwitch(
-                    mode: _mode,
-                    onChanged: (mode) => setState(() => _mode = mode),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 18),
+                    child: _ModeSwitch(
+                      mode: _mode,
+                      onChanged: (mode) => setState(() => _mode = mode),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
