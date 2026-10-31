@@ -282,6 +282,8 @@ class _DisplayOption extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
+        enableFeedback: false,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
           decoration: BoxDecoration(
@@ -339,6 +341,8 @@ class _LanguageOption extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
+        enableFeedback: false,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 14),
           alignment: Alignment.center,
