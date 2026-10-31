@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/l10n/l10n.dart';
 import 'core/services/history_store.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widgets/web_showcase.dart';
 import 'root_shell.dart';
 
 Future<void> main() async {
@@ -42,6 +43,10 @@ class PramaanApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+              // On a wide browser window the mobile layout is shown inside a
+              // centred Android device instead of stretching across the page.
+              builder: (context, child) =>
+                  WebShowcase(child: child ?? const SizedBox.shrink()),
               home: const RootShell(),
             );
           },
