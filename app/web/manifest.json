@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#0B1020",
     "theme_color": "#FF9F1C",
-    "description": "Offline UPI scam shield for India - no account, no upload, no server."
+    "description": "Offline UPI scam shield for India - no account, no upload, no server.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
