@@ -222,6 +222,10 @@ Scoring, in order:
 
 If Pramaan helps you, **star the repo** so more people find it, and share it with someone who might need it. Every star helps an offline tool reach the people who need it most.
 
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for upcoming releases (v1.1 – v2.0).
+
 ---
 
 ## Contributing
