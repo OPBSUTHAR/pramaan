@@ -9,6 +9,23 @@ with it — in Hindi or English — **without sending a single byte off the phon
 
 No account. No server. No model download. Works in airplane mode.
 
+<p align="center">
+  <a href="https://pramaan-five.vercel.app"><img src="https://img.shields.io/badge/Live%20demo-pramaan--five.vercel.app-FF9933?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License"></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.47+-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"></a>
+</p>
+
+**Try it now → [pramaan-five.vercel.app](https://pramaan-five.vercel.app)** — no install, no account, no upload. The web build runs the same offline engine that ships in the Android app.
+
+<p align="center">
+  <img src="docs/screenshots/scan.png" alt="Pramaan scan screen" width="42%">
+</p>
+<p align="center">
+  <img src="docs/screenshots/samples.png" alt="Sample scam messages" width="28%">
+  <img src="docs/screenshots/result.png" alt="Pramaan verdict screen" width="28%">
+  <img src="docs/screenshots/hindi.png" alt="Pramaan in Hindi" width="28%">
+</p>
+
 ```
 ┌──────────────────────────────────────────────────────────┐
 │  "Dear Customer, your account will be BLOCKED today     │
@@ -198,6 +215,12 @@ Scoring, in order:
 - It will not scan your SMS inbox. You paste what you want checked.
 - It will not replace 1930. The Help tab exists for the moment after money has
   already moved.
+
+---
+
+## Spread the word
+
+If Pramaan helps you, **star the repo** so more people find it, and share it with someone who might need it. Every star helps an offline tool reach the people who need it most.
 
 ---
 
